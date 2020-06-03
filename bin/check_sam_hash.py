@@ -60,7 +60,8 @@ def test_file(path):
 # Write command line arguments here
 files = sys.argv[1:]
 
-retvals = map(test_file,files)
+pool = multiprocessing.Pool()
+retvals = pool.map(test_file,files)
 
 n_checked = len(retvals)
 n_good             = retvals.count(STATUS_GOOD)
